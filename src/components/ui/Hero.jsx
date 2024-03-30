@@ -21,7 +21,7 @@ const Hero = () => {
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
           tellus, luctus nec ullamcorper mattis.
         </p>
-        <button className="bg-primary2 font-semibold text-white md:py-[25px] md:px-[72px] py-4  w-5/12 md:mt-[46px] mt-4 md:mb-0 mb-4">
+        <button className="bg-primary2 font-semibold text-white md:py-[25px] md:px-[72px] py-4  w-5/12 md:mt-[46px] mt-4 md:mb-0 mb-4 hover:bg-gray-200 hover:text-gray-800 hover:font-bold">
           BUY NOW
         </button>
       </div>

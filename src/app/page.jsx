@@ -29,7 +29,7 @@ export default function Home() {
           ))}
         </div>
         <div className="w-[245px] h-[48px] mx-auto mt-8">
-          <button className="border border-primary2 font-semibold text-[16px] text-primary2 px-[74px] py-[12px]">
+          <button className="border border-primary2 font-semibold text-[16px] text-primary2 px-[74px] py-[12px] ">
             Show More
           </button>
         </div>
@@ -45,7 +45,7 @@ export default function Home() {
             inspire you
           </p>
           <div>
-            <button className="bg-primary2 text-white px-[36px] py-[12px] lg:mt-0 mt-4">
+            <button className="bg-primary2 text-white px-[36px] py-[12px] lg:mt-0 mt-4 hover:bg-gray-200 hover:text-gray-800 hover:font-bold">
               Explore More
             </button>
           </div>
