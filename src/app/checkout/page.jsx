@@ -1,6 +1,6 @@
-import Banner from "@/components/ui/Banner";
-import Billings from "@/components/forms/Billings";
-import { formatToRupiah } from "@/utils/format";
+import Banner from "../components/ui/Banner";
+import Billings from "../components/forms/Billings";
+import { formatToRupiah } from "../../utils/format";
 
 const Checkout = () => {
   return (

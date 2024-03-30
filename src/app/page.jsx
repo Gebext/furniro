@@ -1,8 +1,8 @@
-import Hero from "@/components/ui/Hero";
-import CategoryHome from "@/components/ui/CategoryHome";
+import Hero from "../components/ui/Hero";
+import CategoryHome from "../components/ui/CategoryHome";
 import productData from "../../public/assets/data/products";
-import Card from "@/components/cards/Card";
-import Carousel from "@/components/shared/Carousel";
+import Card from "../components/cards/Card";
+import Carousel from "../components/shared/Carousel";
 import Image from "next/image";
 import Banner from "../../public/assets/all-image/setup-banner.png";
 
