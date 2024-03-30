@@ -4,7 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { FaShareAlt, FaHeart } from "react-icons/fa";
 
-import { formatToRupiah } from "@/utils/format";
+import { formatToRupiah } from "../../utils/format";
 
 const Card = (props) => {
   const [isHovered, setIsHovered] = useState(false);

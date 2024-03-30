@@ -1,5 +1,5 @@
-import Banner from "@/components/ui/Banner";
-import Email from "@/components/forms/Email";
+import Banner from "../../components/ui/Banner";
+import Email from "../../components/forms/Email";
 import { GrTrophy } from "react-icons/gr";
 import { LuCheckCircle } from "react-icons/lu";
 import { TbTruckDelivery } from "react-icons/tb";

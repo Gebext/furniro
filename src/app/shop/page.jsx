@@ -1,12 +1,12 @@
 "use client";
 
-import Banner from "@/components/ui/Banner";
+import Banner from "../../components/ui/Banner";
 import { CiFilter } from "react-icons/ci";
 import { BsGrid } from "react-icons/bs";
 import { MdOutlineViewDay } from "react-icons/md";
 import productData from "../../../public/assets/data/products";
-import Card from "@/components/cards/Card";
-import Pagination from "@/components/shared/Pagination";
+import Card from "../..//components/cards/Card";
+import Pagination from "../../components/shared/Pagination";
 import { useEffect, useState } from "react";
 import { GrTrophy } from "react-icons/gr";
 import { LuCheckCircle } from "react-icons/lu";
