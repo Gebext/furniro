@@ -1,7 +1,7 @@
 import BannerImage from "../../../public/assets/all-image/bg-image.jpg";
 import { FaChevronRight } from "react-icons/fa6";
 
-const Banner = () => {
+const Banner = (props) => {
   return (
     <div
       className="relative bg-cover bg-center"
@@ -21,7 +21,7 @@ const Banner = () => {
             <p className="mt-2 text-lg flex items-center">
               <span className="cursor-pointer hover:text-primary2">Home</span>
               <FaChevronRight className="mx-2" />
-              <span className="cursor-pointer ">Shop</span>
+              <span className="cursor-pointer ">{props.title}</span>
             </p>
           </div>
         </div>

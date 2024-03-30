@@ -10,13 +10,13 @@ const Carousel = () => {
       imageUrl:
         "https://images.unsplash.com/photo-1544427920-c49ccfb85579?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1422&q=80",
       title: "Hello world",
-      description: "Carousel with TailwindCSS and jQuery",
+      description: "lorem ipsum dolor sit amet",
     },
     {
       imageUrl:
         "https://images.unsplash.com/photo-1544144433-d50aff500b91?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
       title: "Hello world",
-      description: "Carousel with TailwindCSS and jQuery",
+      description: "lorem ipsum dolor sit amet",
     },
   ];
 
