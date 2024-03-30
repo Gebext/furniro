@@ -1,11 +1,11 @@
-import Image1 from "../all-image/product-1.png";
-import Image2 from "../all-image/product-2.png";
-import Image3 from "../all-image/product-3.png";
-import Image4 from "../all-image/product-4.png";
-import Image5 from "../all-image/product-5.png";
-import Image6 from "../all-image/product-6.png";
-import Image7 from "../all-image/product-7.png";
-import Image8 from "../all-image/product-8.png";
+import Image1 from "../all-image/product-01.jpg";
+import Image2 from "../all-image/product-02.jpg";
+import Image3 from "../all-image/product-03.jpg";
+import Image4 from "../all-image/product-04.jpg";
+import Image5 from "../all-image/product-05.jpg";
+import Image6 from "../all-image/product-06.jpg";
+import Image7 from "../all-image/product-07.jpeg";
+import Image8 from "../all-image/product-08.jpg";
 
 const productData = [
   {

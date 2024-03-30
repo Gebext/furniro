@@ -13,9 +13,9 @@ export default function Home() {
     <main>
       <Hero />
       <CategoryHome />
-      <div className="w-10/12 mx-auto mt-[56px]">
+      <div className="lg:w-10/12 w-full mx-auto mt-[56px]">
         <h1 className="font-bold text-[40px] text-center">Our Products</h1>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-8">
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 lg:gap-4 gap-1 mt-8 lg:w-full w-11/12 mx-auto">
           {productDataSubset.map((product) => (
             <Card
               key={product.id}
@@ -35,22 +35,22 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="mt-[70px] bg-primary4 w-full h-[500px] mb-8 flex justify-between items-center px-32">
-        <div className="px-8">
-          <h1 className="font-bold text-[40px] w-8/12">
+      <div className="mt-[70px] bg-primary4 w-full lg:h-[500px] h-auto mb-8 flex justify-between items-center lg:px-32 px-4 lg:flex-row flex-col">
+        <div className="px-8 lg:py-0 py-4">
+          <h1 className="font-bold lg:text-[40px] text-2xl lg:w-8/12 w-10/12">
             50+ Beautiful rooms inspiration
           </h1>
-          <p className="font-medium text-[16px] text-textColor2">
+          <p className="font-medium lg:text-[16px] text-[14px] text-textColor2">
             Our designer already made a lot of beautiful prototype rooms that
             inspire you
           </p>
           <div>
-            <button className="bg-primary2 text-white px-[36px] py-[12px]">
+            <button className="bg-primary2 text-white px-[36px] py-[12px] lg:mt-0 mt-4">
               Explore More
             </button>
           </div>
         </div>
-        <div>
+        <div className="lg:my-0 my-4">
           <Carousel />
         </div>
       </div>
