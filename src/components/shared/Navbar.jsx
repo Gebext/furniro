@@ -7,9 +7,11 @@ import Link from "next/link";
 import Furniro from "../../../public/assets/all-image/logo.svg";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { IoMdClose } from "react-icons/io";
+import CartMiniSidebar from "./CartMiniSidebar";
 
 const Navbar = () => {
   const [isOpenSidebar, setIsOpenSideBar] = useState(false);
+  const [isOpenMiniCart, setIsOpenMiniCart] = useState(false);
 
   return (
     <nav className="bg-white flex justify-between items-center px-4 py-2 mx-4 lg:mx-[96px]">
@@ -49,7 +51,12 @@ const Navbar = () => {
         <FaUser className="text-gray-600 hover:text-black " />
         <FaSearch className="text-gray-600 hover:text-black md:block hidden" />
         <FaHeart className="text-gray-600 hover:text-black md:block hidden" />
-        <FaShoppingCart className="text-gray-600 hover:text-black" />
+        <FaShoppingCart
+          className="text-gray-600 hover:text-black"
+          onClick={() => {
+            return setIsOpenMiniCart(true);
+          }}
+        />
         <GiHamburgerMenu
           className="text-gray-600 hover:text-black md:hidden"
           onClick={() => setIsOpenSideBar(true)}
@@ -92,6 +99,15 @@ const Navbar = () => {
             </ul>
           </div>
         </div>
+      )}
+      {isOpenMiniCart ? (
+        <CartMiniSidebar
+          onHandleCloseButton={() => {
+            return setIsOpenMiniCart(false);
+          }}
+        />
+      ) : (
+        ""
       )}
     </nav>
   );
