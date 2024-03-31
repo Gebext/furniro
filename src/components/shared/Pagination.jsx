@@ -1,5 +1,14 @@
+import React from "react";
+
 const Pagination = ({ page, onClickNext, onClickPrevious }) => {
-  const totalPages = 3;
+  const totalPages = 2;
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
 
   return (
     <div className="my-16">
@@ -8,7 +17,10 @@ const Pagination = ({ page, onClickNext, onClickPrevious }) => {
           className={`px-4 py-2 ${
             page === 1 ? "bg-gray-300" : " bg-primary5"
           } text-black rounded-lg`}
-          onClick={onClickPrevious}
+          onClick={() => {
+            onClickPrevious();
+            scrollToTop();
+          }}
           disabled={page === 1}
         >
           Previous
@@ -27,7 +39,10 @@ const Pagination = ({ page, onClickNext, onClickPrevious }) => {
           className={`px-4 py-2 ${
             page === totalPages ? "bg-gray-300 " : "bg-primary5"
           } text-black rounded-lg`}
-          onClick={onClickNext}
+          onClick={() => {
+            onClickNext();
+            scrollToTop();
+          }}
           disabled={page === totalPages}
         >
           Next

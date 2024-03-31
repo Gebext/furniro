@@ -58,7 +58,7 @@ const Shope = () => {
   const handleOuterDivClick = (event) => {
     event.preventDefault();
     if (selectedProduct.length > 0) {
-      router.push(`/product/${selectedProduct}`);
+      router.push(`/products/${selectedProduct}`);
     }
   };
 
@@ -67,6 +67,7 @@ const Shope = () => {
     setManyData(dataSlice.length);
     setDataShow(dataSlice);
   }, [page]);
+
   return (
     <div>
       <Banner title="Shop" />
@@ -100,7 +101,7 @@ const Shope = () => {
           </select>
         </div>
       </div>
-      <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-8 w-10/12 mx-auto">
+      <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-4 mt-8 w-10/12 mx-auto">
         {dataShow.map((product) => (
           <Card
             key={product.id}
@@ -110,7 +111,7 @@ const Shope = () => {
             price={product.price}
             isDiscount={product.isDiscount}
             discount={product.discount}
-            link={`/product/${product.name}`}
+            link={`/products/${product.name}`}
             handleOuterDivClick={() => {
               if (selectedProduct) {
                 setSelectedProduct(product.name);

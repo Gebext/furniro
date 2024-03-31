@@ -30,7 +30,7 @@ export default function Home() {
     console.log(selectedProduct);
     event.preventDefault();
     if (selectedProduct.length > 0) {
-      router.push(`/product/${selectedProduct}`);
+      router.push(`/products/${selectedProduct}`);
     }
   };
 
@@ -50,7 +50,7 @@ export default function Home() {
               price={product.price}
               isDiscount={product.isDiscount}
               discount={product.discount}
-              link={`/product/${product.name}`}
+              link={`/products/${product.name}`}
               handleOuterDivClick={() => {
                 if (selectedProduct) {
                   setSelectedProduct(product.name);
@@ -82,8 +82,8 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="mt-[70px] bg-primary4 w-full lg:h-[500px] h-auto mb-8 flex justify-between items-center lg:px-32 px-4 lg:flex-row flex-col">
-        <div className="px-8 lg:py-0 py-4">
+      <div className="mt-[70px] bg-primary4 w-full lg:h-[500px] h-auto mb-8 flex justify-between items-center lg:px-32 px-4 md:flex-row flex-col">
+        <div className="px-8 lg:py-0 py-4 lg:w-auto w-auto md:w-1/2">
           <h1 className="font-bold lg:text-[40px] text-2xl lg:w-8/12 w-10/12">
             50+ Beautiful rooms inspiration
           </h1>

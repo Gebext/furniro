@@ -1,32 +1,36 @@
 "use client";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import Image from "next/image";
-import image from "../../../public/assets/all-image/Asgaard Sofa.png";
-import image1 from "../../../public/assets/all-image/Asgaard Sofa 1.png";
-import image2 from "../../../public/assets/all-image/Asgaard Sofa 2.png";
-import image3 from "../../../public/assets/all-image/Asgaard Sofa 3.png";
-import image4 from "../../../public/assets/all-image/Asgaard Sofa 4.png";
-import reviewStar from "../../../public/assets/all-image/Group 88.png";
+import image1 from "../../../../public/assets/all-image/Asgaard Sofa 1.png";
+import image2 from "../../../../public/assets/all-image/Asgaard Sofa 2.png";
+import image3 from "../../../../public/assets/all-image/Asgaard Sofa 3.png";
+import image4 from "../../../../public/assets/all-image/Asgaard Sofa 4.png";
+import reviewStar from "../../../../public/assets/all-image/Group 88.png";
 import { useEffect, useState } from "react";
-import productData from "../../../public/assets/data/products";
-import fb from "../../../public/assets/all-image/akar-icons_facebook-fill.png";
-import ld from "../../../public/assets/all-image/akar-icons_linkedin-box-fill.png";
-import tw from "../../../public/assets/all-image/ant-design_twitter-circle-filled.png";
-import imageDesc1 from "../../../public/assets/all-image/group 106.png";
-import imageDesc2 from "../../../public/assets/all-image/group 107.png";
-import Card from "@/components/cards/Card";
+import productData from "../../../../public/assets/data/products";
+import fb from "../../../../public/assets/all-image/akar-icons_facebook-fill.png";
+import ld from "../../../../public/assets/all-image/akar-icons_linkedin-box-fill.png";
+import tw from "../../../../public/assets/all-image/ant-design_twitter-circle-filled.png";
+import imageDesc1 from "../../../../public/assets/all-image/group 106.png";
+import imageDesc2 from "../../../../public/assets/all-image/group 107.png";
+import Card from "../../../components/cards/Card";
+import Color1 from "../../../../public/assets/all-image/Rectangle 42.png";
+import Color2 from "../../../../public/assets/all-image/Rectangle 43.png";
+import Color3 from "../../../../public/assets/all-image/Rectangle 44.png";
+import { useRouter } from "next/navigation";
 
-const Products = () => {
+const Products = ({ params }) => {
   const [isSize, setIsSize] = useState("L");
-  const [isColor, setIsColor] = useState("");
+  const [isColor, setIsColor] = useState(Color1);
   const [amount, setAmount] = useState(1);
   const size = ["L", "XL", "XS"];
-  const color = ["#816DFA", "#000000", "#B88E2F"];
+  const color = [Color1, Color2, Color3];
   const [data, setData] = useState({});
   const [manyData, setManyData] = useState(4);
+  const router = useRouter();
 
   useEffect(() => {
-    const find = productData.findIndex((val) => val.name == "Asgaard Sofa");
+    const find = productData.findIndex((val) => val.name == params.slug);
     setData(productData[find]);
   }, []);
 
@@ -34,12 +38,22 @@ const Products = () => {
     <main>
       {/* Section 1 : Page Address */}
       <section>
-        <div className="h-[100px] bg-primary5 flex items-center gap-[21px] px-[99px]">
-          <p className="text-textColor4">Home</p>
+        <div className="h-[100px] bg-primary5 flex items-center md:gap-[21px] gap-2 md:px-[99px] px-4">
+          <p
+            className="text-textColor4 cursor-pointer  hover:text-black"
+            onClick={() => router.push("/")}
+          >
+            Home
+          </p>
           <p>
             <MdKeyboardArrowRight className="font-bold text-2xl" />
           </p>
-          <p className="text-textColor4">Shop</p>
+          <p
+            className="text-textColor4 cursor-pointer hover:text-black"
+            onClick={() => router.push("/shop")}
+          >
+            Shop
+          </p>
           <p>
             <MdKeyboardArrowRight className="text-2xl font-bold" />
           </p>
@@ -53,7 +67,7 @@ const Products = () => {
       <section className="pt-[35px] px-4 md:px-[100px]">
         <div className="grid md:grid-cols-2 ">
           {/* Left Side : Product Image*/}
-          <div className="flex flex-col-reverse md:flex-row gap-[32px] md:gap-0">
+          <div className="flex flex-col-reverse md:flex-row gap-[32px] md:gap-0 md:space-x-4">
             <div className="flex md:flex-col md:gap-[32px] gap-[18px] justify-center md:justify-normal">
               <div className="rounded-md w-[76px] h-[80px] bg-primary5 hover:outline hover:outline-2 outline-primary2">
                 <Image
@@ -88,8 +102,12 @@ const Products = () => {
                 />
               </div>
             </div>
-            <div className="w-[481px] h-[500px] bg- rounded-md mx-auto md:mx-0">
-              <Image src={image} alt="Product Image" className="min-w-full" />
+            <div className="md:w-[481px] md:h-[500px] rounded-md mx-auto md:mx-0 ">
+              <Image
+                src={data.img}
+                alt="Product Image"
+                className="min-w-full"
+              />
             </div>
             <div></div>
           </div>
@@ -143,15 +161,16 @@ const Products = () => {
               <div className="flex gap-[16px] mt-[12px]">
                 {color.map((val, id) => {
                   return (
-                    <div
+                    <Image
                       key={id}
+                      src={val}
                       className={` ${
-                        isColor == val ? "outline outline-blue-500" : ""
-                      }  hover:opacity-60 w-[30px] h-[30px] cursor-pointer rounded-full bg-[${val}] flex`}
+                        isColor === val ? "outline outline-blue-500" : ""
+                      }  rounded-full`}
                       onClick={() => {
-                        return setIsColor(val);
+                        setIsColor(val);
                       }}
-                    ></div>
+                    ></Image>
                   );
                 })}
               </div>
@@ -215,7 +234,7 @@ const Products = () => {
                 <div className=" text-textColor4 text-[16px] flex">
                   <p className="min-w-[75px]">Tags</p>
                   <p className="ml-[16px] mr-[12px]">:</p>
-                  <p>{data.tag}</p>
+                  <p>Furniture, Aesthetic, Simple</p>
                 </div>
                 <div className=" text-textColor4 text-[16px] flex">
                   <p className="min-w-[75px]">Share</p>
@@ -247,9 +266,9 @@ const Products = () => {
       </section>
 
       {/* Section 3 : product detail, additional information and review */}
-      <section className="border-t-[1px] border-[#D9D9D9] pt-[48px] pb-[65px]">
+      <section className="border-t-[1px] border-[#D9D9D9] pt-[48px] pb-[65px] md:w-full w-11/12 mx-auto">
         <nav className="flex justify-center">
-          <ul className="flex gap-[52px] text-lg md:text-[24px]">
+          <ul className="flex md:gap-[52px] gap-4 text-sm md:text-[24px]">
             <li className="hover:cursor-pointer">Description</li>
             <li className="text-textColor4 hover:cursor-pointer hover:underline">
               Additional Information
@@ -259,7 +278,7 @@ const Products = () => {
             </li>
           </ul>
         </nav>
-        <div className="flex flex-col gap-[30px] justify-center mx-auto lg:w-[1026px] mt-[37px] text-textColor4 px-4 text-justify">
+        <div className="flex flex-col gap-[30px] justify-center mx-auto lg:w-[1026px] mt-[37px] text-textColor4 px-4 text-justify lg:text-base text-sm">
           <p>
             Embodying the raw, wayward spirit of rock ‘n’ roll, the Kilburn
             portable active stereo speaker takes the unmistakable look and sound
@@ -295,7 +314,7 @@ const Products = () => {
         <p className="text-center font-medium text-[36px] mb-[26px]">
           Related Products
         </p>
-        <div className="flex justify-center gap-[32px] px-[50px] flex-wrap">
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-8 w-10/12 mx-auto">
           {productData.map((val, idx) => {
             if (idx < manyData) {
               return (

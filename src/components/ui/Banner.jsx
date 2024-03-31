@@ -21,7 +21,7 @@ const Banner = (props) => {
       <div className="py-32">
         <div className="absolute inset-0 flex justify-center items-center">
           <div className="text-white text-center">
-            <h1 className="text-4xl font-bold">Shop</h1>
+            <h1 className="text-4xl font-bold">{props.title}</h1>
             <p className="mt-2 text-lg flex items-center">
               <span
                 className="cursor-pointer hover:text-primary2"
