@@ -1,5 +1,5 @@
-const Pagination = ({ page, onClickNext, onClickPrevious }) => {
-  const totalPages = 3;
+const PaginationBackup = ({ page, onClickNext, onClickPrevious }) => {
+  const totalPages = 2;
 
   return (
     <div className="my-16">
@@ -37,4 +37,4 @@ const Pagination = ({ page, onClickNext, onClickPrevious }) => {
   );
 };
 
-export default Pagination;
+export default PaginationBackup;
