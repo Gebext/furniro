@@ -122,7 +122,7 @@ const productData = [
   },
   {
     id: 9,
-    name: "Potty",
+    name: "Asgaard Sofa",
     shortDescription: "Minimalist Flower Pot",
     price: 500000,
     isDiscount: false,
@@ -130,6 +130,7 @@ const productData = [
     discountPrice: 50,
     sku: "SS008",
     category: "Sofas",
+    tag : "Sofa, Chair",
     description:
       " Dolor labore lorem no accusam sit justo sadipscing labore invidunt voluptua, amet duo et gubergren vero gubergren dolor. At diam. Dolor labore lorem no accusam sit justo sadipscing labore invidunt voluptua, amet duo et gubergren vero gubergren dolor. At diam.",
     img: Image8,
