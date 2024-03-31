@@ -12,7 +12,7 @@ const Card = (props) => {
 
   return (
     <div
-      className="lg:w-[285px] lg:h-[446px] w-[155px] h-[255px] relative overflow-hidden"
+      className="lg:w-[285px] lg:h-[446px] w-[155px] h-[255px] relative overflow-hidden mx-auto lg:my-0 my-4"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >

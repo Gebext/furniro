@@ -6,9 +6,9 @@ const Checkout = () => {
   return (
     <div>
       <Banner title="Checkout" />
-      <div className="flex justify-between p-32">
+      <div className="md:flex justify-between lg:p-32 md:p-8 p-4 md:flex-row flex-col">
         <Billings />
-        <div className="w-1/2 px-16 ">
+        <div className="md:w-1/2 md:px-16 px-4">
           <div className="flex justify-between mt-12">
             <h1 className="font-medium text-[24px]">Product</h1>
             <h1 className="font-medium text-[24px]">Subtotal</h1>

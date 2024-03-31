@@ -5,7 +5,7 @@ import { FaClock } from "react-icons/fa";
 
 const Email = () => {
   return (
-    <div className="w-10/12 mx-auto flex lg:flex-row flex-col-reverse justify-between lg:px-32">
+    <div className="w-10/12 mx-auto flex md:flex-row flex-col-reverse justify-between lg:px-32">
       <div className="w-auto mx-auto mt-4">
         <div className="flex space-x-4">
           <HiMiniMapPin size={36} />

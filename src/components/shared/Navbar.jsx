@@ -67,23 +67,36 @@ const Navbar = () => {
             />
             <ul className="mt-12 text-center">
               <li className="py-4">
-                <Link href="/" className="text-gray-600 hover:text-black">
+                <Link
+                  href="/"
+                  onClick={() => setIsOpenSideBar(false)}
+                  className="text-gray-600 hover:text-black"
+                >
                   Home
                 </Link>
               </li>
               <li className="py-4">
-                <Link href="/shop" className="text-gray-600 hover:text-black">
+                <Link
+                  href="/shop"
+                  onClick={() => setIsOpenSideBar(false)}
+                  className="text-gray-600 hover:text-black"
+                >
                   Shop
                 </Link>
               </li>
               <li className="py-4">
-                <Link href="/about" className="text-gray-600 hover:text-black">
-                  About
+                <Link
+                  href="/blog"
+                  onClick={() => setIsOpenSideBar(false)}
+                  className="text-gray-600 hover:text-black"
+                >
+                  Blog
                 </Link>
               </li>
               <li className="py-4">
                 <Link
                   href="/contact"
+                  onClick={() => setIsOpenSideBar(false)}
                   className="text-gray-600 hover:text-black"
                 >
                   Contact
