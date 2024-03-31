@@ -12,6 +12,7 @@ import { GrTrophy } from "react-icons/gr";
 import { LuCheckCircle } from "react-icons/lu";
 import { TbTruckDelivery } from "react-icons/tb";
 import { RiCustomerService2Line } from "react-icons/ri";
+import { useRouter } from "next/navigation";
 
 const items = [
   {
@@ -40,6 +41,24 @@ const Shope = () => {
   const [page, setPage] = useState(1);
   const [dataShow, setDataShow] = useState([]);
   const [manyData, setManyData] = useState(0);
+  const [selectedProduct, setSelectedProduct] = useState("");
+  const router = useRouter();
+
+  const handleAddToCart = (event) => {
+    event.stopPropagation();
+    const find = productData.find((val) => val.name === selectedProduct);
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    if (!Array.isArray(cart)) {
+      cart = [];
+    }
+    cart.push(find);
+    localStorage.setItem("cart", JSON.stringify(cart));
+  };
+
+  const handleOuterDivClick = (event) => {
+    event.preventDefault();
+    router.push(`/product/${selectedProduct}`);
+  };
 
   useEffect(() => {
     const dataSlice = productData.slice(8 * page - 8, 8 * page);
@@ -89,6 +108,25 @@ const Shope = () => {
             price={product.price}
             isDiscount={product.isDiscount}
             discount={product.discount}
+            link={`/product/${product.name}`}
+            handleOuterDivClick={() => {
+              if (selectedProduct) {
+                setSelectedProduct(product.name);
+                handleOuterDivClick(event);
+              } else {
+                setSelectedProduct(product.name);
+                handleOuterDivClick(event);
+              }
+            }}
+            handleAddToCart={(event) => {
+              if (selectedProduct) {
+                setSelectedProduct(product.name);
+                handleAddToCart(event);
+              } else {
+                handleAddToCart(event);
+                setSelectedProduct(product.name);
+              }
+            }}
           />
         ))}
       </div>
