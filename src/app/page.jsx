@@ -1,3 +1,5 @@
+"use client";
+
 import Hero from "../components/ui/Hero";
 import CategoryHome from "../components/ui/CategoryHome";
 import productData from "../../public/assets/data/products";
@@ -5,9 +7,29 @@ import Card from "../components/cards/Card";
 import Carousel from "../components/shared/Carousel";
 import Image from "next/image";
 import Banner from "../../public/assets/all-image/setup-banner.png";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 export default function Home() {
   const productDataSubset = productData.slice(0, 8);
+  const [selectedProduct, setSelectedProduct] = useState("");
+  const router = useRouter();
+
+  const handleAddToCart = (event) => {
+    event.stopPropagation();
+    const find = productData.find((val) => val.name === selectedProduct);
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    if (!Array.isArray(cart)) {
+      cart = [];
+    }
+    cart.push(find);
+    localStorage.setItem("cart", JSON.stringify(cart));
+  };
+
+  const handleOuterDivClick = (event) => {
+    event.preventDefault();
+    router.push(`/product/${selectedProduct}`);
+  };
 
   return (
     <main>
@@ -25,6 +47,25 @@ export default function Home() {
               price={product.price}
               isDiscount={product.isDiscount}
               discount={product.discount}
+              link={`/product/${product.name}`}
+              handleOuterDivClick={() => {
+                if (selectedProduct) {
+                  setSelectedProduct(product.name);
+                  handleOuterDivClick(event);
+                } else {
+                  setSelectedProduct(product.name);
+                  handleOuterDivClick(event);
+                }
+              }}
+              handleAddToCart={(event) => {
+                if (selectedProduct) {
+                  setSelectedProduct(product.name);
+                  handleAddToCart(event);
+                } else {
+                  handleAddToCart(event);
+                  setSelectedProduct(product.name);
+                }
+              }}
             />
           ))}
         </div>
