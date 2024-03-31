@@ -50,11 +50,11 @@ const Products = () => {
       </section>
 
       {/* Section 2 : Product Image (Left side) & Product Desc + Add to cart button (Right Side)*/}
-      <section className="pt-[35px] px-[100px]">
-        <div className="grid grid-cols-2 ">
+      <section className="pt-[35px] px-4 md:px-[100px]">
+        <div className="grid md:grid-cols-2 ">
           {/* Left Side : Product Image*/}
-          <div className="flex">
-            <div className="flex flex-col gap-[32px]">
+          <div className="flex flex-col-reverse md:flex-row gap-[32px] md:gap-0">
+            <div className="flex md:flex-col md:gap-[32px] gap-[18px] justify-center md:justify-normal">
               <div className="rounded-md w-[76px] h-[80px] bg-primary5 hover:outline hover:outline-2 outline-primary2">
                 <Image
                   priority={"true"}
@@ -63,11 +63,32 @@ const Products = () => {
                   className="min-w-[76px]"
                 />
               </div>
-              <Image src={image2} alt="Product Image" />
-              <Image src={image3} alt="Product Image" />
-              <Image src={image4} alt="Product Image" />
+              <div className="rounded-md w-[76px] h-[80px] bg-primary5 hover:outline hover:outline-2 outline-primary2">
+                <Image
+                  priority={"true"}
+                  src={image2}
+                  alt="Product Image"
+                  className="min-w-[76px]"
+                />
+              </div>
+              <div className="rounded-md w-[76px] h-[80px] bg-primary5 hover:outline hover:outline-2 outline-primary2">
+                <Image
+                  priority={"true"}
+                  src={image3}
+                  alt="Product Image"
+                  className="min-w-[76px]"
+                />
+              </div>
+              <div className="rounded-md w-[76px] h-[80px] bg-primary5 hover:outline hover:outline-2 outline-primary2">
+                <Image
+                  priority={"true"}
+                  src={image4}
+                  alt="Product Image"
+                  className="min-w-[76px]"
+                />
+              </div>
             </div>
-            <div className="w-[481px] h-[500px] bg- rounded-md">
+            <div className="w-[481px] h-[500px] bg- rounded-md mx-auto md:mx-0">
               <Image src={image} alt="Product Image" className="min-w-full" />
             </div>
             <div></div>
@@ -89,7 +110,7 @@ const Products = () => {
                   </p>
                 </div>
               </div>
-              <p className="text-[13px] font-normal mt-[13px]">
+              <p className="text-[13px] font-normal mt-[13px] text-justify">
                 Setting the bar as one of the loudest speakers in its class, the
                 Kilburn is a compact, stout-hearted hero with a well-balanced
                 audio which boasts a clear midrange and extended highs for a
@@ -147,7 +168,7 @@ const Products = () => {
                       alert("Oops minimum product to add is 1");
                       setAmount(1);
                     } else {
-                      setAmount(amount - 1);
+                      setAmount(parseInt(amount) - 1);
                     }
                   }}
                 >
@@ -166,7 +187,7 @@ const Products = () => {
                 <div
                   className="w-fit cursor-pointer hover:opacity-60"
                   onClick={() => {
-                    setAmount(amount + 1);
+                    setAmount(parseInt(amount) + 1);
                   }}
                 >
                   +
@@ -254,16 +275,16 @@ const Products = () => {
             personal preferences while the guitar-influenced leather strap
             enables easy and stylish travel.
           </p>
-          <div className="flex justify-center gap-[29px]">
+          <div className="flex flex-col md:flex-row justify-center gap-[29px]">
             <Image
               src={imageDesc1}
               alt="img desc 1"
-              className="w-[605px] h-[348px] "
+              className="w-full md:w-[605px] md:h-[348px] "
             />
             <Image
               src={imageDesc2}
               alt="img desc 2"
-              className="w-[605px] h-[348px]"
+              className="w-full md:w-[605px] md:h-[348px]"
             />
           </div>
         </div>
@@ -292,14 +313,17 @@ const Products = () => {
             }
           })}
         </div>
-        <div className={`${manyData<productData.length?"flex":"hidden"} justify-center mt-[44px]`}>
+        <div
+          className={`${
+            manyData < productData.length ? "flex" : "hidden"
+          } justify-center mt-[44px]`}
+        >
           <button
             className="px-[74px] py-[12px] text-[#B88E2F] border-[1px] border-[#B88E2F] hover:opacity-60 font-semibold text-base"
-            onClick={()=>{
-              if(manyData<productData.length) {
-                return setManyData(manyData+4)
+            onClick={() => {
+              if (manyData < productData.length) {
+                return setManyData(manyData + 4);
               } else {
-
               }
             }}
           >
