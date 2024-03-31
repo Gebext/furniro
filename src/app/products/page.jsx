@@ -23,17 +23,12 @@ const Products = () => {
   const size = ["L", "XL", "XS"];
   const color = ["#816DFA", "#000000", "#B88E2F"];
   const [data, setData] = useState({});
-  const [dataShow, setDataShow] = useState([]);
-  const [page, setPage] = useState(1);
+  const [manyData, setManyData] = useState(4);
 
   useEffect(() => {
     const find = productData.findIndex((val) => val.name == "Asgaard Sofa");
     setData(productData[find]);
   }, []);
-
-  useEffect(()=>{
-
-  },[dataShow])
 
   return (
     <main>
@@ -275,13 +270,13 @@ const Products = () => {
       </section>
 
       {/* Section 4 : related product */}
-      <section className="pt-[55px] border-t-[1px] border-[#D9D9D9]">
+      <section className="pt-[55px] border-t-[1px] border-[#D9D9D9] pb-[92px]">
         <p className="text-center font-medium text-[36px] mb-[26px]">
           Related Products
         </p>
-        <div className="flex gap-[32px] px-[100px]">
+        <div className="flex justify-center gap-[32px] px-[50px] flex-wrap">
           {productData.map((val, idx) => {
-            if (idx < 4) {
+            if (idx < manyData) {
               return (
                 <Card
                   key={val.id}
@@ -296,6 +291,20 @@ const Products = () => {
             } else {
             }
           })}
+        </div>
+        <div className={`${manyData<productData.length?"flex":"hidden"} justify-center mt-[44px]`}>
+          <button
+            className="px-[74px] py-[12px] text-[#B88E2F] border-[1px] border-[#B88E2F] hover:opacity-60 font-semibold text-base"
+            onClick={()=>{
+              if(manyData<productData.length) {
+                return setManyData(manyData+4)
+              } else {
+
+              }
+            }}
+          >
+            Show More
+          </button>
         </div>
       </section>
     </main>
