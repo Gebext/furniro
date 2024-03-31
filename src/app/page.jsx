@@ -27,8 +27,11 @@ export default function Home() {
   };
 
   const handleOuterDivClick = (event) => {
+    console.log(selectedProduct);
     event.preventDefault();
-    router.push(`/product/${selectedProduct}`);
+    if (selectedProduct.length > 0) {
+      router.push(`/product/${selectedProduct}`);
+    }
   };
 
   return (
@@ -53,8 +56,8 @@ export default function Home() {
                   setSelectedProduct(product.name);
                   handleOuterDivClick(event);
                 } else {
-                  setSelectedProduct(product.name);
                   handleOuterDivClick(event);
+                  setSelectedProduct(product.name);
                 }
               }}
               handleAddToCart={(event) => {
@@ -70,7 +73,10 @@ export default function Home() {
           ))}
         </div>
         <div className="w-[245px] h-[48px] mx-auto mt-8">
-          <button className="border border-primary2 font-semibold text-[16px] text-primary2 px-[74px] py-[12px] ">
+          <button
+            className="border border-primary2 font-semibold text-[16px] text-primary2 px-[74px] py-[12px] "
+            onClick={() => router.push("/shop")}
+          >
             Show More
           </button>
         </div>

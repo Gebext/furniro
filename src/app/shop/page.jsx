@@ -57,7 +57,9 @@ const Shope = () => {
 
   const handleOuterDivClick = (event) => {
     event.preventDefault();
-    router.push(`/product/${selectedProduct}`);
+    if (selectedProduct.length > 0) {
+      router.push(`/product/${selectedProduct}`);
+    }
   };
 
   useEffect(() => {
@@ -114,8 +116,8 @@ const Shope = () => {
                 setSelectedProduct(product.name);
                 handleOuterDivClick(event);
               } else {
-                setSelectedProduct(product.name);
                 handleOuterDivClick(event);
+                setSelectedProduct(product.name);
               }
             }}
             handleAddToCart={(event) => {

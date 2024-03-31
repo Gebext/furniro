@@ -50,7 +50,7 @@ const Email = () => {
           <Input label="Message" />
         </div>
         <div>
-          <button className="bg-primary2 text-white px-[88px] py-[13px] rounded-[5px] my-[50px]">
+          <button className="bg-primary2 text-white px-[88px] py-[13px] rounded-[5px] my-[50px] hover:bg-gray-200 hover:text-gray-800 hover:font-bold">
             Submit
           </button>
         </div>

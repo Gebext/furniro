@@ -1,7 +1,11 @@
+"use client";
+
 import BannerImage from "../../../public/assets/all-image/bg-image.jpg";
 import { FaChevronRight } from "react-icons/fa6";
+import { useRouter } from "next/navigation";
 
 const Banner = (props) => {
+  const router = useRouter();
   return (
     <div
       className="relative bg-cover bg-center"
@@ -19,7 +23,12 @@ const Banner = (props) => {
           <div className="text-white text-center">
             <h1 className="text-4xl font-bold">Shop</h1>
             <p className="mt-2 text-lg flex items-center">
-              <span className="cursor-pointer hover:text-primary2">Home</span>
+              <span
+                className="cursor-pointer hover:text-primary2"
+                onClick={() => router.push("/")}
+              >
+                Home
+              </span>
               <FaChevronRight className="mx-2" />
               <span className="cursor-pointer ">{props.title}</span>
             </p>
