@@ -1,13 +1,18 @@
 import React from "react";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const Pagination = ({ page, onClickNext, onClickPrevious }) => {
   const totalPages = 2;
+  const router = useRouter();
 
   const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
+    if (typeof window !== "undefined") {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    }
   };
 
   return (
@@ -23,7 +28,7 @@ const Pagination = ({ page, onClickNext, onClickPrevious }) => {
           }}
           disabled={page === 1}
         >
-          Previous
+          <Link href={"#"}>Previous</Link>
         </button>
         {[...Array(totalPages)].map((_, index) => (
           <div
@@ -45,7 +50,7 @@ const Pagination = ({ page, onClickNext, onClickPrevious }) => {
           }}
           disabled={page === totalPages}
         >
-          Next
+          <Link href={"#"}>Next</Link>
         </button>
       </div>
     </div>
