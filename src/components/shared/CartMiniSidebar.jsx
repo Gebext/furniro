@@ -36,6 +36,7 @@ const CartMiniSidebar = (props) => {
       total += val.qty * val.pricePerItem;
     });
     setSubTotal(total);
+    sessionStorage.setItem("total", JSON.stringify(total));
   }, [findData]);
 
   const handleDelete = (productId) => {
