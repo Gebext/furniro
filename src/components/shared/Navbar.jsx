@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FaUser, FaSearch, FaHeart, FaShoppingCart } from "react-icons/fa";
 import Image from "next/image";
 import Link from "next/link";
@@ -8,13 +8,39 @@ import Furniro from "../../../public/assets/all-image/logo.svg";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { IoMdClose } from "react-icons/io";
 import CartMiniSidebar from "./CartMiniSidebar";
+import { useRouter } from "next/navigation";
 
 const Navbar = () => {
   const [isOpenSidebar, setIsOpenSideBar] = useState(false);
   const [isOpenMiniCart, setIsOpenMiniCart] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const router = useRouter();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const offset = window.scrollY;
+      if (offset > 100) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
-    <nav className="bg-white flex justify-between items-center px-4 py-2 mx-4 lg:mx-[96px]">
+    <nav
+      className={`bg-white flex justify-between items-center  ${
+        isScrolled
+          ? "fixed top-0 left-0 w-full z-50 shadow-md px-4 lg:px-32 h-16 bg-opacity-90"
+          : "px-4 py-2 mx-4 lg:mx-[96px]"
+      }`}
+    >
       {/* Left section */}
       <div className="flex items-center">
         {/* Logo and company name */}
@@ -53,9 +79,7 @@ const Navbar = () => {
         <FaHeart className="text-gray-600 hover:text-black md:block hidden" />
         <FaShoppingCart
           className="text-gray-600 hover:text-black"
-          onClick={() => {
-            return setIsOpenMiniCart(true);
-          }}
+          onClick={() => setIsOpenMiniCart(true)}
         />
         <GiHamburgerMenu
           className="text-gray-600 hover:text-black md:hidden"
@@ -115,8 +139,14 @@ const Navbar = () => {
       )}
       {isOpenMiniCart ? (
         <CartMiniSidebar
-          onHandleCloseButton={() => {
-            return setIsOpenMiniCart(false);
+          onHandleCloseButton={() => setIsOpenMiniCart(false)}
+          onCart={() => {
+            setIsOpenMiniCart(false);
+            router.push("/cart");
+          }}
+          onCheckout={() => {
+            setIsOpenMiniCart(false);
+            router.push("/checkout");
           }}
         />
       ) : (

@@ -18,6 +18,7 @@ import Color1 from "../../../../public/assets/all-image/Rectangle 42.png";
 import Color2 from "../../../../public/assets/all-image/Rectangle 43.png";
 import Color3 from "../../../../public/assets/all-image/Rectangle 44.png";
 import { useRouter } from "next/navigation";
+import { formatToRupiah } from "../../../utils/format";
 
 const Products = ({ params }) => {
   const [isSize, setIsSize] = useState("L");
@@ -29,10 +30,24 @@ const Products = ({ params }) => {
   const [manyData, setManyData] = useState(4);
   const router = useRouter();
 
+  const onHandleAddProduct = () => {
+    const find = productData.find((val) => val.name === params.slug);
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    if (!Array.isArray(cart)) {
+      cart = [];
+    }
+    if (find) {
+      cart.push(find);
+      localStorage.setItem("cart", JSON.stringify(cart));
+    }
+  };
+
   useEffect(() => {
     const find = productData.findIndex((val) => val.name == params.slug);
     setData(productData[find]);
   }, []);
+
+  console.log(data);
 
   return (
     <main>
@@ -58,7 +73,7 @@ const Products = ({ params }) => {
             <MdKeyboardArrowRight className="text-2xl font-bold" />
           </p>
           <div className="border-l-[2.5px] border-textColor4 pl-[21px] py-[5px]">
-            <p>Asgaard Sofa</p>
+            <p>{data.name || ""}</p>
           </div>
         </div>
       </section>
@@ -116,9 +131,9 @@ const Products = ({ params }) => {
           <div className="mb-[55px]">
             {/* Product Title, Price and description */}
             <div>
-              <p className=" font-normal text-[42px]">Asgaard Sofa</p>
+              <p className=" font-normal text-[42px]">{data.name}</p>
               <p className=" text-textColor4 font-medium text-[24px]">
-                Rp 5.000.000
+                {formatToRupiah(data.price || 0)}
               </p>
               <div className="mt-[15px] flex items-center">
                 <Image src={reviewStar} alt={"review rating"} />
@@ -213,7 +228,10 @@ const Products = ({ params }) => {
                 </div>
               </div>
               {/* Add to cart */}
-              <div className="w-[215px] h-[64px] text-[20px]  border-[1px] rounded-[10px] border-textColor4 flex justify-center items-center hover:bg-primary5 cursor-pointer ">
+              <div
+                onClick={onHandleAddProduct}
+                className="w-[215px] h-[64px] text-[20px]  border-[1px] rounded-[10px] border-textColor4 flex justify-center items-center hover:bg-primary5 cursor-pointer "
+              >
                 Add To Cart
               </div>
             </div>
@@ -224,12 +242,12 @@ const Products = ({ params }) => {
                 <div className=" text-textColor4 text-[16px] flex">
                   <p className="min-w-[75px]">SKU</p>
                   <p className="ml-[16px] mr-[12px]">:</p>
-                  <p>{data.sku}</p>
+                  <p>{data.sku || ""}</p>
                 </div>
                 <div className=" text-textColor4 text-[16px] flex">
                   <p className="min-w-[75px]">Category</p>
                   <p className="ml-[16px] mr-[12px]">:</p>
-                  <p>{data.category}</p>
+                  <p>{data.category || ""}</p>
                 </div>
                 <div className=" text-textColor4 text-[16px] flex">
                   <p className="min-w-[75px]">Tags</p>

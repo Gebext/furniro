@@ -20,3 +20,32 @@ export function formatToRupiah(price) {
   // Return the formatted rupiah string
   return "Rp " + rupiah;
 }
+
+export const convertToDummyCart = (products) => {
+  // Create an object to store the count, price, name, and image of each product ID
+  const countMap = {};
+  products.forEach((product) => {
+    if (!countMap[product.id]) {
+      countMap[product.id] = {
+        count: 0,
+        pricePerItem: product.price, // Store price per item
+        name: product.name, // Store product name
+        img: product.img, // Store product image
+      };
+    }
+    countMap[product.id].count++;
+  });
+
+  // Convert the count map to the dummy cart format
+  const dummyCart = Object.entries(countMap).map(
+    ([productId, { count, pricePerItem, name, img }]) => ({
+      productId: parseInt(productId), // Convert productId to integer
+      qty: count,
+      pricePerItem,
+      name,
+      img,
+    })
+  );
+
+  return dummyCart;
+};

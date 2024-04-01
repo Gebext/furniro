@@ -44,22 +44,20 @@ const Shope = () => {
   const [selectedProduct, setSelectedProduct] = useState("");
   const router = useRouter();
 
-  const handleAddToCart = (event) => {
+  const handleAddToCart = (event, product) => {
     event.stopPropagation();
-    const find = productData.find((val) => val.name === selectedProduct);
-    let cart = JSON.parse(localStorage.getItem("cart")) || [];
-    if (!Array.isArray(cart)) {
-      cart = [];
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const find = cart.find((item) => item.name === product.name);
+    if (!find) {
+      cart.push(product);
+      localStorage.setItem("cart", JSON.stringify(cart));
     }
-    cart.push(find);
-    localStorage.setItem("cart", JSON.stringify(cart));
   };
 
-  const handleOuterDivClick = (event) => {
+  const handleOuterDivClick = (event, product) => {
     event.preventDefault();
-    if (selectedProduct.length > 0) {
-      router.push(`/products/${selectedProduct}`);
-    }
+    setSelectedProduct(product.name);
+    router.push(`/products/${product.name}`);
   };
 
   useEffect(() => {
@@ -112,24 +110,8 @@ const Shope = () => {
             isDiscount={product.isDiscount}
             discount={product.discount}
             link={`/products/${product.name}`}
-            handleOuterDivClick={() => {
-              if (selectedProduct) {
-                setSelectedProduct(product.name);
-                handleOuterDivClick(event);
-              } else {
-                handleOuterDivClick(event);
-                setSelectedProduct(product.name);
-              }
-            }}
-            handleAddToCart={(event) => {
-              if (selectedProduct) {
-                setSelectedProduct(product.name);
-                handleAddToCart(event);
-              } else {
-                handleAddToCart(event);
-                setSelectedProduct(product.name);
-              }
-            }}
+            handleOuterDivClick={(event) => handleOuterDivClick(event, product)}
+            handleAddToCart={(event) => handleAddToCart(event, product)}
           />
         ))}
       </div>
