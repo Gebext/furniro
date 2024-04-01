@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 
 const Pagination = ({ page, onClickNext, onClickPrevious }) => {
   const totalPages = 2;
@@ -23,7 +24,7 @@ const Pagination = ({ page, onClickNext, onClickPrevious }) => {
           }}
           disabled={page === 1}
         >
-          Previous
+          <Link href={"#"}>Previous</Link>
         </button>
         {[...Array(totalPages)].map((_, index) => (
           <div
@@ -45,7 +46,7 @@ const Pagination = ({ page, onClickNext, onClickPrevious }) => {
           }}
           disabled={page === totalPages}
         >
-          Next
+          <Link href={"#"}>Next</Link>
         </button>
       </div>
     </div>
