@@ -47,6 +47,7 @@ const Products = ({ params }) => {
     setData(productData[find]);
   }, []);
 
+
   return (
     <main>
       {/* Section 1 : Page Address */}
