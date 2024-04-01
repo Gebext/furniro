@@ -1,3 +1,5 @@
+"use client";
+
 import Hero from "../components/ui/Hero";
 import CategoryHome from "../components/ui/CategoryHome";
 import productData from "../../public/assets/data/products";
@@ -5,9 +7,27 @@ import Card from "../components/cards/Card";
 import Carousel from "../components/shared/Carousel";
 import Image from "next/image";
 import Banner from "../../public/assets/all-image/setup-banner.png";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
   const productDataSubset = productData.slice(0, 8);
+  const router = useRouter();
+
+  const handleAddToCart = (event, product) => {
+    event.stopPropagation();
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const find = cart.find((item) => item.name === product.name);
+    if (!find) {
+      cart.push(product);
+      localStorage.setItem("cart", JSON.stringify(cart));
+    }
+  };
+
+  const handleOuterDivClick = (event, product) => {
+    event.preventDefault();
+    setSelectedProduct(product.name);
+    router.push(`/products/${product.name}`);
+  };
 
   return (
     <main>
@@ -25,18 +45,26 @@ export default function Home() {
               price={product.price}
               isDiscount={product.isDiscount}
               discount={product.discount}
+              link={`/products/${product.name}`}
+              handleOuterDivClick={(event) =>
+                handleOuterDivClick(event, product)
+              }
+              handleAddToCart={(event) => handleAddToCart(event, product)}
             />
           ))}
         </div>
         <div className="w-[245px] h-[48px] mx-auto mt-8">
-          <button className="border border-primary2 font-semibold text-[16px] text-primary2 px-[74px] py-[12px] ">
+          <button
+            className="border border-primary2 font-semibold text-[16px] text-primary2 px-[74px] py-[12px] "
+            onClick={() => router.push("/shop")}
+          >
             Show More
           </button>
         </div>
       </div>
 
-      <div className="mt-[70px] bg-primary4 w-full lg:h-[500px] h-auto mb-8 flex justify-between items-center lg:px-32 px-4 lg:flex-row flex-col">
-        <div className="px-8 lg:py-0 py-4">
+      <div className="mt-[70px] bg-primary4 w-full lg:h-[500px] h-auto mb-8 flex justify-between items-center lg:px-32 px-4 md:flex-row flex-col">
+        <div className="px-8 lg:py-0 py-4 lg:w-auto w-auto md:w-1/2">
           <h1 className="font-bold lg:text-[40px] text-2xl lg:w-8/12 w-10/12">
             50+ Beautiful rooms inspiration
           </h1>

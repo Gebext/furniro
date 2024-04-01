@@ -12,6 +12,7 @@ import { GrTrophy } from "react-icons/gr";
 import { LuCheckCircle } from "react-icons/lu";
 import { TbTruckDelivery } from "react-icons/tb";
 import { RiCustomerService2Line } from "react-icons/ri";
+import { useRouter } from "next/navigation";
 
 const items = [
   {
@@ -40,12 +41,31 @@ const Shope = () => {
   const [page, setPage] = useState(1);
   const [dataShow, setDataShow] = useState([]);
   const [manyData, setManyData] = useState(0);
+  const [selectedProduct, setSelectedProduct] = useState("");
+  const router = useRouter();
+
+  const handleAddToCart = (event, product) => {
+    event.stopPropagation();
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const find = cart.find((item) => item.name === product.name);
+    if (!find) {
+      cart.push(product);
+      localStorage.setItem("cart", JSON.stringify(cart));
+    }
+  };
+
+  const handleOuterDivClick = (event, product) => {
+    event.preventDefault();
+    setSelectedProduct(product.name);
+    router.push(`/products/${product.name}`);
+  };
 
   useEffect(() => {
     const dataSlice = productData.slice(8 * page - 8, 8 * page);
     setManyData(dataSlice.length);
     setDataShow(dataSlice);
   }, [page]);
+
   return (
     <div>
       <Banner title="Shop" />
@@ -79,7 +99,7 @@ const Shope = () => {
           </select>
         </div>
       </div>
-      <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-8 w-10/12 mx-auto">
+      <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-4 mt-8 w-10/12 mx-auto">
         {dataShow.map((product) => (
           <Card
             key={product.id}
@@ -89,6 +109,9 @@ const Shope = () => {
             price={product.price}
             isDiscount={product.isDiscount}
             discount={product.discount}
+            link={`/products/${product.name}`}
+            handleOuterDivClick={(event) => handleOuterDivClick(event, product)}
+            handleAddToCart={(event) => handleAddToCart(event, product)}
           />
         ))}
       </div>

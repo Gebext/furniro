@@ -14,7 +14,7 @@ const CategoryHome = () => {
         {categoryData.map((cat, index) => (
           <div key={index} className="text-center flex flex-col items-center">
             <Image src={cat.img} alt={cat.name} />
-            <h1 className="mt-[30px] font-semibold text-[24px] text-textColor1">
+            <h1 className="lg:mt-[30px] mt-[14px] font-semibold text-[24px] text-textColor1">
               {cat.name}
             </h1>
           </div>

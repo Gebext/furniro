@@ -3,7 +3,9 @@ import Input from "../shared/Input";
 const Billings = () => {
   return (
     <div>
-      <h1 className="font-semibold text-[36px]">Billing details</h1>
+      <h1 className="font-semibold md:text-[36px] text-[24px] md:text-start text-center">
+        Billing details
+      </h1>
       <div className="flex justify-between space-x-2 mt-8">
         <Input label="First Name" />
         <Input label="Last Name" />

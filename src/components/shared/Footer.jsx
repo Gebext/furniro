@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const Footer = () => {
   return (
     <div className="border-t-2 border-[#9F9F9F] h-[500px] flex flex-col justify-between">
@@ -14,10 +16,26 @@ const Footer = () => {
             Links
           </h1>
           <ul className="lg:space-y-8">
-            <li className="font-medium text-[16px] cursor-pointer">Home</li>
-            <li className="font-medium text-[16px] cursor-pointer">Shop</li>
-            <li className="font-medium text-[16px] cursor-pointer">About</li>
-            <li className="font-medium text-[16px] cursor-pointer">Contact</li>
+            <li className="font-medium text-[16px] cursor-pointer">
+              <Link href="/">
+                <div>Home</div>
+              </Link>
+            </li>
+            <li className="font-medium text-[16px] cursor-pointer">
+              <Link href="/shop">
+                <div>Shop</div>
+              </Link>
+            </li>
+            <li className="font-medium text-[16px] cursor-pointer">
+              <Link href="/about">
+                <div>About</div>
+              </Link>
+            </li>
+            <li className="font-medium text-[16px] cursor-pointer">
+              <Link href="/contact">
+                <div>Contact</div>
+              </Link>
+            </li>
           </ul>
         </div>
 

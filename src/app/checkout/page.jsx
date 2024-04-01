@@ -1,40 +1,67 @@
+"use client";
+
 import Banner from "../../components/ui/Banner";
 import Billings from "../../components/forms/Billings";
 import { formatToRupiah } from "../../utils/format";
+import { useEffect, useState } from "react";
+import { convertToDummyCart } from "../../utils/format";
 
 const Checkout = () => {
+  const [total, setTotal] = useState();
+  const [data, setData] = useState();
+
+  useEffect(() => {
+    const storedData = localStorage.getItem("cart");
+    const dataArray = JSON.parse(storedData);
+    const storedTotal = sessionStorage.getItem("total");
+    const dataTotal = JSON.parse(storedTotal);
+    setData(convertToDummyCart(dataArray));
+    setTotal(dataTotal);
+  }, []);
+
+  console.log(data);
+
   return (
     <div>
       <Banner title="Checkout" />
-      <div className="flex justify-between p-32">
+      <div className="md:flex justify-between lg:p-32 md:p-8 p-4 md:flex-row flex-col">
         <Billings />
-        <div className="w-1/2 px-16 ">
+        <div className="md:w-1/2 md:px-16 px-4">
           <div className="flex justify-between mt-12">
             <h1 className="font-medium text-[24px]">Product</h1>
             <h1 className="font-medium text-[24px]">Subtotal</h1>
           </div>
           {/* Product Looping dari local storage */}
-          <div className="flex justify-between mt-4">
-            <h1 className="text-[16px] text-textColor4">
-              Asgard Sofa
-              <span className="font-medium text-[12px] text-black mx-4">
-                x 1
-              </span>
-            </h1>
-            <h1>{formatToRupiah(250000)}</h1>
-          </div>
-          {/* Total */}
-          <div className="flex justify-between mt-4">
-            <h1 className="text-[16px] text-black">Subtotal</h1>
-            <h1>{formatToRupiah(250000)}</h1>
-          </div>
-          {/* Subtotal */}
-          <div className="flex justify-between mt-4">
-            <h1 className="text-[16px] text-black">Total</h1>
-            <h1 className="text-primary2 font-bold text-[24px]">
-              {formatToRupiah(250000)}
-            </h1>
-          </div>
+          {data && data.length > 0 ? (
+            <>
+              {/* Product Looping dari local storage */}
+              {data.map((item, index) => (
+                <div key={index} className="flex justify-between mt-4">
+                  <h1 className="text-[16px] text-textColor4">
+                    {item.name}
+                    <span className="font-medium text-[12px] text-black mx-4">
+                      x{item.qty}
+                    </span>
+                  </h1>
+                  <h1>{formatToRupiah(item.pricePerItem * item.qty)}</h1>
+                </div>
+              ))}
+              {/* Total */}
+              <div className="flex justify-between mt-4">
+                <h1 className="text-[16px] text-black">Subtotal</h1>
+                <h1>{formatToRupiah(total || 0)}</h1>
+              </div>
+              {/* Subtotal */}
+              <div className="flex justify-between mt-4">
+                <h1 className="text-[16px] text-black">Total</h1>
+                <h1 className="text-primary2 font-bold text-[24px]">
+                  {formatToRupiah(total || 0)}
+                </h1>
+              </div>
+            </>
+          ) : (
+            <p className="text-center">Loading...</p>
+          )}
 
           <hr className="mt-8 border-t-2 " />
           <div className="flex flex-col mt-8">

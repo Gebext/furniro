@@ -5,7 +5,7 @@ import { FaClock } from "react-icons/fa";
 
 const Email = () => {
   return (
-    <div className="w-10/12 mx-auto flex lg:flex-row flex-col-reverse justify-between lg:px-32">
+    <div className="w-10/12 mx-auto flex md:flex-row flex-col-reverse justify-between lg:px-32">
       <div className="w-auto mx-auto mt-4">
         <div className="flex space-x-4">
           <HiMiniMapPin size={36} />
@@ -50,7 +50,7 @@ const Email = () => {
           <Input label="Message" />
         </div>
         <div>
-          <button className="bg-primary2 text-white px-[88px] py-[13px] rounded-[5px] my-[50px]">
+          <button className="bg-primary2 text-white px-[88px] py-[13px] rounded-[5px] my-[50px] hover:bg-gray-200 hover:text-gray-800 hover:font-bold">
             Submit
           </button>
         </div>

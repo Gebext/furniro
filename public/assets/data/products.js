@@ -6,6 +6,8 @@ import Image5 from "../all-image/product-05.jpg";
 import Image6 from "../all-image/product-06.jpg";
 import Image7 from "../all-image/product-07.jpeg";
 import Image8 from "../all-image/product-08.jpg";
+import Image9 from "../all-image/Asgaard Sofa.png";
+
 
 const productData = [
   {
@@ -122,17 +124,18 @@ const productData = [
   },
   {
     id: 9,
-    name: "Potty",
-    shortDescription: "Minimalist Flower Pot",
+    name: "Asgaard Sofa",
+    shortDescription: "Elegant Stylish Sofa",
     price: 500000,
     isDiscount: false,
     isNew: false,
     discountPrice: 50,
     sku: "SS008",
     category: "Sofas",
+    tag : "Sofa, Chair",
     description:
       " Dolor labore lorem no accusam sit justo sadipscing labore invidunt voluptua, amet duo et gubergren vero gubergren dolor. At diam. Dolor labore lorem no accusam sit justo sadipscing labore invidunt voluptua, amet duo et gubergren vero gubergren dolor. At diam.",
-    img: Image8,
+    img: Image9,
   },
 ];
 
