@@ -25,7 +25,6 @@ export default function Home() {
 
   const handleOuterDivClick = (event, product) => {
     event.preventDefault();
-    setSelectedProduct(product.name);
     router.push(`/products/${product.name}`);
   };
 

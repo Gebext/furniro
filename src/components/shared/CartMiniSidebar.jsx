@@ -36,6 +36,8 @@ const CartMiniSidebar = (props) => {
       total += val.qty * val.pricePerItem;
     });
     setSubTotal(total);
+    sessionStorage.setItem("total", JSON.stringify(total));
+
   }, [findData]);
 
   const handleDelete = (productId) => {
@@ -72,7 +74,7 @@ const CartMiniSidebar = (props) => {
             onClick={props.onHandleCloseButton}
           />
         </div>
-        <div className="flex flex-col gap-[20px] h-full">
+        <div className="flex flex-col gap-[20px] h-full max-h-[350px] overflow-auto">
           {findProduct.length < 1 ? (
             <p className="text-center">Empty</p>
           ) : (
