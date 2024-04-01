@@ -41,7 +41,6 @@ const Shope = () => {
   const [page, setPage] = useState(1);
   const [dataShow, setDataShow] = useState([]);
   const [manyData, setManyData] = useState(0);
-  const [selectedProduct, setSelectedProduct] = useState("");
   const router = useRouter();
 
   const handleAddToCart = (event, product) => {
@@ -56,7 +55,6 @@ const Shope = () => {
 
   const handleOuterDivClick = (event, product) => {
     event.preventDefault();
-    setSelectedProduct(product.name);
     router.push(`/products/${product.name}`);
   };
 

@@ -11,8 +11,7 @@ import productData from "../../../../public/assets/data/products";
 import fb from "../../../../public/assets/all-image/akar-icons_facebook-fill.png";
 import ld from "../../../../public/assets/all-image/akar-icons_linkedin-box-fill.png";
 import tw from "../../../../public/assets/all-image/ant-design_twitter-circle-filled.png";
-import imageDesc1 from "../../../../public/assets/all-image/group 106.png";
-import imageDesc2 from "../../../../public/assets/all-image/group 107.png";
+import imageDesc1 from "../../../../public/assets/all-image/main-banner.png";
 import Card from "../../../components/cards/Card";
 import Color1 from "../../../../public/assets/all-image/Rectangle 42.png";
 import Color2 from "../../../../public/assets/all-image/Rectangle 43.png";
@@ -46,7 +45,6 @@ const Products = ({ params }) => {
     const find = productData.findIndex((val) => val.name == params.slug);
     setData(productData[find]);
   }, []);
-
 
   return (
     <main>
@@ -318,7 +316,7 @@ const Products = ({ params }) => {
               className="w-full md:w-[605px] md:h-[348px] "
             />
             <Image
-              src={imageDesc2}
+              src={imageDesc1}
               alt="img desc 2"
               className="w-full md:w-[605px] md:h-[348px]"
             />
